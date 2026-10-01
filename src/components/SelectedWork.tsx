@@ -3,28 +3,37 @@
 import React, { useState } from "react";
 import { PROJECTS, CaseStudyData } from "@/data/projectsData";
 import { PhoenixInteractivePipeline } from "./PhoenixInteractivePipeline";
+import {
+  AutoRedTeamShowcase,
+  ExecutionerShowcase,
+  SensorFusionShowcase,
+  KinetixShowcase,
+} from "./ProjectShowcases";
 import { CaseStudyModal } from "./CaseStudyModal";
-import { ArrowUpRight, Cpu, Layers, Sparkles, Terminal } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export const SelectedWork: React.FC = () => {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudyData | null>(null);
 
-  // Separate Phoenix and others
   const phoenix = PROJECTS.find((p) => p.id === "phoenix-labs")!;
-  const otherProjects = PROJECTS.filter((p) => p.id !== "phoenix-labs");
+  const autoredteam = PROJECTS.find((p) => p.id === "autoredteam")!;
+  const executioner = PROJECTS.find((p) => p.id === "executioner")!;
+  const sensorFusion = PROJECTS.find((p) => p.id === "sensor-fusion")!;
+  const kinetix = PROJECTS.find((p) => p.id === "kinetix-dynamics")!;
+  const portfolio = PROJECTS.find((p) => p.id === "nitten-portfolio-00")!;
 
   return (
-    <section id="work" className="py-24 sm:py-32 relative border-t border-[#222226]">
+    <section id="work" className="py-32 sm:py-44 relative border-t border-[#222226]">
       {/* Background Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-fine opacity-70 pointer-events-none" />
+      <div className="absolute inset-0 bg-grid-fine opacity-50 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 sm:mb-24 gap-6">
+        {/* Section Header with Generous Negative Space */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 sm:mb-32 gap-8">
           <div>
-            <div className="flex items-center gap-3 font-mono text-xs text-[#FF4D1F] uppercase tracking-widest mb-3">
+            <div className="flex items-center gap-3 font-mono text-xs text-[#FF4D1F] uppercase tracking-widest mb-4">
               <span className="w-1.5 h-1.5 bg-[#FF4D1F]" />
-              <span>EXHIBITS & RECENT ENGAGEMENTS</span>
+              <span>SELECTED EXHIBITS</span>
             </div>
             <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold text-[#F2F2F0] tracking-tight uppercase">
               Selected Work{" "}
@@ -34,127 +43,350 @@ export const SelectedWork: React.FC = () => {
             </h2>
           </div>
 
-          <p className="text-sm sm:text-base text-[#8A8A8F] font-mono max-w-sm">
-            Not mockups. Real engineering, AI systems, and high-performance digital architecture built to ship.
+          <p className="text-sm sm:text-base text-[#8A8A8F] font-light max-w-md leading-relaxed">
+            Real systems, AI pipelines, and high-performance digital products engineered to ship.
           </p>
         </div>
 
-        {/* 01 — FLAGSHIP TECHNICAL CASE STUDY: PHOENIX LABS */}
-        <div className="mb-20 sm:mb-28">
-          <div className="group relative rounded-2xl bg-[#0A0A0B] border border-[#222226] p-6 sm:p-10 transition-all duration-500 hover:border-[#FF4D1F]/60">
-            {/* Top Exhibit Meta */}
+        {/* ------------------------------------------------------------- */}
+        {/* EXHIBIT 01: PHOENIX LABS (Flagship Technical Case Study) */}
+        {/* ------------------------------------------------------------- */}
+        <div className="mb-28 sm:mb-36">
+          <div className="group rounded-3xl bg-[#0A0A0B] border border-[#222226] p-7 sm:p-12 transition-all duration-500 hover:border-[#FF4D1F]/50">
+            {/* Header Strip */}
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#222226]">
               <div className="flex items-center gap-3 font-mono text-xs">
-                <span className="px-2.5 py-1 rounded bg-[#FF4D1F] text-white font-bold">
-                  FLAGSHIP 01
-                </span>
-                <span className="text-[#8A8A8F]">AI-POWERED OUTBOUND INFRASTRUCTURE</span>
+                <span className="text-[#FF4D1F] font-bold">01 / FLAGSHIP</span>
                 <span className="text-[#222226]">|</span>
-                <span className="text-[#8A8A8F]">2026</span>
+                <span className="text-[#8A8A8F]">AI OUTBOUND INFRASTRUCTURE</span>
               </div>
 
               <button
                 onClick={() => setSelectedCaseStudy(phoenix)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#141416] border border-[#222226] text-xs font-mono text-[#F2F2F0] group-hover:text-white group-hover:border-[#FF4D1F] transition-all"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#F2F2F0] hover:text-[#FF4D1F] transition-colors"
               >
-                <span>Read Full Case Study</span>
+                <span>Explore Full Case</span>
                 <ArrowUpRight className="w-4 h-4 text-[#FF4D1F]" />
               </button>
             </div>
 
-            {/* Narrative Headline */}
-            <div className="max-w-3xl mb-8">
-              <h3 className="font-display text-3xl sm:text-5xl font-bold text-[#F2F2F0] mb-4">
+            {/* Editorial Title */}
+            <div className="max-w-3xl mb-10">
+              <h3 className="font-display text-3xl sm:text-5xl font-bold text-[#F2F2F0] mb-3">
                 Phoenix Labs
               </h3>
               <p className="text-base sm:text-xl text-[#8A8A8F] font-light leading-relaxed">
-                Replacing manual, error-prone sales prospecting with a deterministic multi-stage AI pipeline. Lead ingestion, two-tier qualification, and intent-based reply triage.
+                Autonomous outbound infrastructure replacing manual prospecting with deterministic two-tier AI qualification and intent-based reply classification.
               </p>
             </div>
 
-            {/* Embedded Live Interactive Pipeline */}
+            {/* Interactive Demonstration Surface */}
             <PhoenixInteractivePipeline />
 
-            {/* Key Metrics Strip */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-[#222226]">
-              {phoenix.results.map((r, i) => (
-                <div key={i} className="flex flex-col">
-                  <span className="font-display text-3xl sm:text-4xl font-bold text-[#FF4D1F]">
-                    {r.stat}
-                  </span>
-                  <span className="font-display text-sm font-semibold text-[#F2F2F0] mt-1">
-                    {r.label}
-                  </span>
-                  <span className="text-xs text-[#8A8A8F] font-mono mt-0.5">{r.context}</span>
-                </div>
-              ))}
+            {/* Verified Metrics */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t border-[#222226]">
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#FF4D1F]">
+                  4.8x
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Reply Rate Lift
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Vs. static email templates</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  12,400+
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Records Normalized
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Processed through multi-tier gate</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  99.2%
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Inbox Placement
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Zero burned domains</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* REMAINING EXHIBITS (02, 03, 04, 05 & 00) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
-          {otherProjects.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => setSelectedCaseStudy(item)}
-              className="group cursor-pointer rounded-2xl bg-[#0A0A0B] border border-[#222226] p-7 sm:p-9 flex flex-col justify-between transition-all duration-500 hover:border-[#FF4D1F]/70 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.6)] relative overflow-hidden"
-            >
-              {/* Subtle top ember glow line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-transparent group-hover:bg-[#FF4D1F] transition-all duration-500" />
-
-              <div>
-                {/* Header Metadata */}
-                <div className="flex items-center justify-between pb-4 mb-6 border-b border-[#222226] font-mono text-xs text-[#8A8A8F]">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[#FF4D1F] font-bold">EXHIBIT {item.number}</span>
-                    <span className="text-[#222226]">/</span>
-                    <span className="uppercase">{item.category}</span>
-                  </div>
-                  <span>{item.year}</span>
-                </div>
-
-                {/* Title & Tagline */}
-                <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#F2F2F0] mb-2 group-hover:text-white transition-colors">
-                  {item.title}
-                </h3>
-                <p className="font-mono text-xs text-[#FF4D1F] mb-4 uppercase tracking-wider">
-                  {item.subtitle}
-                </p>
-                <p className="text-[#8A8A8F] text-sm leading-relaxed mb-6">
-                  {item.summary}
-                </p>
-
-                {/* Exhibit Mock Visual / Telemetry Block */}
-                <div className="bg-[#141416] border border-[#222226] rounded-xl p-4 mb-6 font-mono text-xs text-[#8A8A8F] group-hover:border-[#FF4D1F]/40 transition-colors">
-                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#222226]/60 text-[10px] text-[#8A8A8F]">
-                    <span>SYSTEM ARTIFACT</span>
-                    <span className="text-[#FF4D1F]">LIVE VERIFICATION</span>
-                  </div>
-                  <div className="text-white/90 truncate font-mono text-[11px]">
-                    {item.keyScreens[0]?.content || "System DAG Execution Telemetry"}
-                  </div>
-                </div>
+        {/* ------------------------------------------------------------- */}
+        {/* EXHIBIT 02: AUTOREDTEAM */}
+        {/* ------------------------------------------------------------- */}
+        <div className="mb-28 sm:mb-36">
+          <div className="group rounded-3xl bg-[#0A0A0B] border border-[#222226] p-7 sm:p-12 transition-all duration-500 hover:border-[#FF4D1F]/50">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#222226]">
+              <div className="flex items-center gap-3 font-mono text-xs">
+                <span className="text-[#FF4D1F] font-bold">02 / AI DEFENSE</span>
+                <span className="text-[#222226]">|</span>
+                <span className="text-[#8A8A8F]">LLM RED-TEAMING & FUZZING</span>
               </div>
 
-              {/* Bottom Card Footer */}
-              <div className="pt-4 border-t border-[#222226] flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="font-display text-xl font-bold text-[#FF4D1F]">
-                    {item.results[0]?.stat}
-                  </span>
-                  <span className="font-mono text-xs text-[#8A8A8F]">
-                    {item.results[0]?.label}
-                  </span>
-                </div>
+              <button
+                onClick={() => setSelectedCaseStudy(autoredteam)}
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#F2F2F0] hover:text-[#FF4D1F] transition-colors"
+              >
+                <span>Explore Full Case</span>
+                <ArrowUpRight className="w-4 h-4 text-[#FF4D1F]" />
+              </button>
+            </div>
 
-                <div className="flex items-center gap-1.5 font-mono text-xs text-[#F2F2F0] group-hover:text-[#FF4D1F] transition-colors">
-                  <span>View Case</span>
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
+            <div className="max-w-3xl mb-10">
+              <h3 className="font-display text-3xl sm:text-5xl font-bold text-[#F2F2F0] mb-3">
+                AutoRedTeam
+              </h3>
+              <p className="text-base sm:text-xl text-[#8A8A8F] font-light leading-relaxed">
+                Automated adversarial fuzzing framework stress-testing enterprise LLM apps against prompt injection, data exfiltration, and persona bypasses.
+              </p>
+            </div>
+
+            {/* Interactive Demonstration */}
+            <AutoRedTeamShowcase />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t border-[#222226]">
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#FF4D1F]">
+                  1,500+
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Synthetic Attack Vectors
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Automated CI/CD suite</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  99.4%
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Boundary Defense
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">OWASP standard evaluation</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  &lt;3 min
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Execution Turnaround
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Continuous pipeline checks</span>
               </div>
             </div>
-          ))}
+          </div>
+        </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* EXHIBIT 03: EXECUTIONER */}
+        {/* ------------------------------------------------------------- */}
+        <div className="mb-28 sm:mb-36">
+          <div className="group rounded-3xl bg-[#0A0A0B] border border-[#222226] p-7 sm:p-12 transition-all duration-500 hover:border-[#FF4D1F]/50">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#222226]">
+              <div className="flex items-center gap-3 font-mono text-xs">
+                <span className="text-[#FF4D1F] font-bold">03 / PRODUCT</span>
+                <span className="text-[#222226]">|</span>
+                <span className="text-[#8A8A8F]">EXECUTION ENGINE</span>
+              </div>
+
+              <button
+                onClick={() => setSelectedCaseStudy(executioner)}
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#F2F2F0] hover:text-[#FF4D1F] transition-colors"
+              >
+                <span>Explore Full Case</span>
+                <ArrowUpRight className="w-4 h-4 text-[#FF4D1F]" />
+              </button>
+            </div>
+
+            <div className="max-w-3xl mb-10">
+              <h3 className="font-display text-3xl sm:text-5xl font-bold text-[#F2F2F0] mb-3">
+                Executioner
+              </h3>
+              <p className="text-base sm:text-xl text-[#8A8A8F] font-light leading-relaxed">
+                Zero-latency keyboard-first execution surface engineered to eliminate cognitive friction and maintain deep work momentum through deterministic task DAGs.
+              </p>
+            </div>
+
+            {/* Interactive Demonstration */}
+            <ExecutionerShowcase />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t border-[#222226]">
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#FF4D1F]">
+                  &lt;16ms
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Interaction Latency
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Zero frame drops</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  100%
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Local-First Offline
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Zero cloud blocking</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  3.2x
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Throughput Velocity
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Documented daily shipping</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* EXHIBIT 04: MULTIMODAL SENSOR FUSION */}
+        {/* ------------------------------------------------------------- */}
+        <div className="mb-28 sm:mb-36">
+          <div className="group rounded-3xl bg-[#0A0A0B] border border-[#222226] p-7 sm:p-12 transition-all duration-500 hover:border-[#FF4D1F]/50">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#222226]">
+              <div className="flex items-center gap-3 font-mono text-xs">
+                <span className="text-[#FF4D1F] font-bold">04 / RESEARCH</span>
+                <span className="text-[#222226]">|</span>
+                <span className="text-[#8A8A8F]">INDUSTRIAL FAULT-DETECTION</span>
+              </div>
+
+              <button
+                onClick={() => setSelectedCaseStudy(sensorFusion)}
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#F2F2F0] hover:text-[#FF4D1F] transition-colors"
+              >
+                <span>Explore Full Case</span>
+                <ArrowUpRight className="w-4 h-4 text-[#FF4D1F]" />
+              </button>
+            </div>
+
+            <div className="max-w-3xl mb-10">
+              <h3 className="font-display text-3xl sm:text-5xl font-bold text-[#F2F2F0] mb-3">
+                Multimodal Sensor Fusion
+              </h3>
+              <p className="text-base sm:text-xl text-[#8A8A8F] font-light leading-relaxed">
+                Deep learning research and edge deployment fusing vibration, ultrasonic acoustic, and thermal telemetry for real-time anomaly detection in heavy industrial machinery.
+              </p>
+            </div>
+
+            {/* Interactive Demonstration */}
+            <SensorFusionShowcase />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t border-[#222226]">
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#FF4D1F]">
+                  96.4%
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Accuracy
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Across 4 failure modes</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  14 hrs
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Early Warning Window
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Pre-empts thermal failure</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  42ms
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Edge Inference
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Low-power ARM architecture</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* EXHIBIT 05: KINETIX DYNAMICS (Flagship Web Concept) */}
+        {/* ------------------------------------------------------------- */}
+        <div className="mb-20">
+          <div className="group rounded-3xl bg-[#0A0A0B] border border-[#222226] p-7 sm:p-12 transition-all duration-500 hover:border-[#FF4D1F]/50">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-[#222226]">
+              <div className="flex items-center gap-3 font-mono text-xs">
+                <span className="text-[#FF4D1F] font-bold">05 / CONCEPT</span>
+                <span className="text-[#222226]">|</span>
+                <span className="text-[#8A8A8F]">ROBOTICS & EMBODIED AI</span>
+              </div>
+
+              <button
+                onClick={() => setSelectedCaseStudy(kinetix)}
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#F2F2F0] hover:text-[#FF4D1F] transition-colors"
+              >
+                <span>Explore Full Case</span>
+                <ArrowUpRight className="w-4 h-4 text-[#FF4D1F]" />
+              </button>
+            </div>
+
+            <div className="max-w-3xl mb-10">
+              <h3 className="font-display text-3xl sm:text-5xl font-bold text-[#F2F2F0] mb-3">
+                Kinetix Dynamics
+              </h3>
+              <p className="text-base sm:text-xl text-[#8A8A8F] font-light leading-relaxed">
+                Flagship digital experience and real-time WebGL kinematics interface engineered for an autonomous robotics brand to showcase creative technology standards.
+              </p>
+            </div>
+
+            {/* Interactive Demonstration */}
+            <KinetixShowcase />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10 pt-8 border-t border-[#222226]">
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#FF4D1F]">
+                  60 FPS
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  WebGL Sustained
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Mobile & desktop GPU budget</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  100%
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Bespoke Shaders
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Zero template UI kits</span>
+              </div>
+              <div>
+                <span className="font-display text-3xl sm:text-4xl font-bold text-[#F2F2F0]">
+                  &lt;1.2s
+                </span>
+                <span className="font-display text-sm font-semibold text-[#F2F2F0] block mt-1">
+                  Time-to-Interactive
+                </span>
+                <span className="text-xs text-[#8A8A8F] font-mono">Deferred 3D asset pipeline</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* EXHIBIT 00: THIS WEBSITE AS CASE STUDY */}
+        {/* ------------------------------------------------------------- */}
+        <div className="mt-16 text-center">
+          <button
+            onClick={() => setSelectedCaseStudy(portfolio)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#141416] border border-[#222226] text-xs font-mono text-[#8A8A8F] hover:text-[#F2F2F0] hover:border-[#FF4D1F] transition-all"
+          >
+            <span>00 / This Website — View Studio Architecture Case Study</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#FF4D1F]" />
+          </button>
         </div>
       </div>
 
